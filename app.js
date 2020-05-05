@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;  // || 3000;
 const verifyRoute = require('./routes');
 const requests = require('./requests');
 
@@ -12,6 +12,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //GET
+
+app.get('/', function (req, res) {
+    res.send('API');
+});
 
 app.get('/api/:id', function (req, res) {
     const id = req.params.id;
